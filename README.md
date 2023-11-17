@@ -13,7 +13,7 @@ Assurez-vous d'avoir les éléments suivants installés sur votre système :
    - Clonez le dépôt ou téléchargez le code source sous forme de fichier ZIP.
      
     ```bash
-      git clone https://github.com/votre-nom/votre-projet-jeu.git
+      git clone https://github.com/cheeesus/mineure.git
     ```
    Ou téléchargez et extrayez le fichier ZIP.
 
