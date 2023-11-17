@@ -30,8 +30,9 @@ Utilisez la commande appropriée pour compiler le code C. Par exemple, avec GCC 
     ```
 Remplacez votre_nom_executable par le nom souhaité pour l'exécutable.
 
-Exécution du Jeu
+3. **Exécution du Jeu** :
 Une fois que le code est compilé, vous pouvez exécuter le jeu :
+
     ```bash
       ./votre_nom_executable
     ```
