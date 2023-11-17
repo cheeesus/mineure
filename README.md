@@ -1,4 +1,4 @@
-# Instructions pour Exécuter le Jeu
+# Instructions pour Exécuter le Code
 
 ## Prérequis
 
