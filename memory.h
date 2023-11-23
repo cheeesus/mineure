@@ -131,38 +131,26 @@ void Hide_table_2D(int niv, int numRows, int numCols, int *table)
     }
     printf("\n");
 }
-void Display_selected(int niv, int numRows, int numCols, int *table, int row1, int col1, int row2, int col2)
-{
+void Display_selected(int niv, int numRows, int numCols, int *table, int row1, int col1, int row2, int col2){
     int cst = 88;
     Display_Header(niv, numRows, numCols);
     printf("\n Colonne>");
-    for (int i = 0; i < numCols; i++)
-    {
+    for (int i = 0; i < numCols; i++){
         printf("    %d ", i);
     }
     printf("\n Lignes |");
-    for (int i = 1; i <= numCols; i++)
-    {
+    for (int i = 1; i <= numCols; i++){
         printf("   __ ");
     }
-
     printf("\n");
-
-    for (int row = 0; row < numRows; row++)
-    {
+    for (int row = 0; row < numRows; row++){
         printf("\n    %c   |", 'A' + row);
-        for (int col = 0; col < numCols; col++)
-        {
-            if (matched_cells[row][col])
-            {
+        for (int col = 0; col < numCols; col++){
+            if (matched_cells[row][col]){
                 printf("    %d ", table[row * numCols + col]);
-            }
-            else if ((row == row1 && col == col1) || (row == row2 && col == col2))
-            {
+            } else if ((row == row1 && col == col1) || (row == row2 && col == col2)) {
                 printf("    %d ", table[row * numCols + col]);
-            }
-            else
-            {
+            } else {
                 printf("    %d ", cst);
             }
         }
@@ -200,11 +188,9 @@ int getGameLevelChoice()
 void play_memory()
 {
     Display_Memory_Rules();
-    int level, cells, numRows, numCols;
-    int pairs = 0;
+    int level, cells, numRows, numCols, pairs = 0;
     level = getGameLevelChoice();
-    switch (level)
-    {
+    switch (level){
     case 1:
         cells = FACILE;
         numRows = 3;
@@ -232,22 +218,16 @@ void play_memory()
     }
     int numbers[cells], table[numRows][numCols], totalpairs = cells / 2;
     initialize_matched_cells(numRows, numCols);
-
     Fill_Table_1D(cells, numbers);
     srand(time(NULL));
     Shuffle_Table_1D(numbers, cells);
-
     Fill_Table_2D(numRows, numCols, cells, &table[0][0], numbers);
     Display_Table_2D(level, numRows, numCols, &table[0][0]);
     printf("\n");
-
     sleep(5);
-
     Hide_table_2D(level, numRows, numCols, &table[0][0]);
-
     char case1[3], case2[3];
-    while (pairs < totalpairs)
-    {
+    while (pairs < totalpairs){
         printf("1ere case a visualiser (Ligne/colonne) ? : ");
         scanf("%s", case1);
         int row1 = case1[0] - 'A';
@@ -256,24 +236,16 @@ void play_memory()
         scanf("%s", case2);
         int row2 = case2[0] - 'A';
         int col2 = case2[2] - '0';
-
-        if (table[row1][col1] == table[row2][col2])
-        {
+        if (table[row1][col1] == table[row2][col2]){
             matched_cells[row1][col1] = 1;
             matched_cells[row2][col2] = 1;
             pairs++;
-
             Display_selected(level, numRows, numCols, &table[0][0], row1, col1, row2, col2);
-        }
-        else
-        {
+        } else {
             Display_selected(level, numRows, numCols, &table[0][0], row1, col1, row2, col2);
             sleep(3);
             Hide_table_2D(level, numRows, numCols, &table[0][0]);
         }
     }
-
-    printf(" *******************************\n");
-    printf(" ************ BRAVO ************\n");
-    printf(" *******************************\n");
+    printf(" *******************************\n ************ BRAVO ************\n *******************************\n");
 }
